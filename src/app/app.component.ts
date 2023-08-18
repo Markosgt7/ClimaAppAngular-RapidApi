@@ -15,13 +15,23 @@ export class AppComponent implements OnInit {
   humedad: number = 0;
   clima: any;
   icono: string = '';
-  ciudad_consulta: string = '';
+  ciudad_consulta: string = 'Guatemala';
   nombre_ciudad: string = '';
+  descripcion_clima = '';
 
   constructor(private weatherService: WeatherService) {}
 
   ngOnInit(): void {
-    this.weatherService.getWeather('lima').subscribe({
+    this.obtenerDatosClima(this.ciudad_consulta);
+  }
+
+  onSubmit() {
+    this.obtenerDatosClima(this.ciudad_consulta);
+    this.nombre_ciudad = '';
+  }
+
+  private obtenerDatosClima(ciudad_consulta: string) {
+    this.weatherService.getWeather(ciudad_consulta).subscribe({
       next: (response) => {
         console.log(response);
         this.clima = response;
@@ -31,6 +41,7 @@ export class AppComponent implements OnInit {
         this.viento = this.clima.wind.speed;
         this.nombre_ciudad = this.clima.name;
         this.temperatura = this.clima.main.temp;
+        this.descripcion_clima = this.clima.weather[0].description;
       },
       error: (err) => console.info('Error', err.message),
     });

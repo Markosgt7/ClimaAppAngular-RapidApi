@@ -1,3 +1,8 @@
+<div class="search">
+  <form #form="ngForm" (submit)="onSubmit()">
+    <input type="text" placeholder="Ciudad Buscada" name="city" [(ngModel)]="ciudad_consulta">
+  </form>
+</div>
 <div class="container" *ngIf="clima">
   <div class="upper-data">
     <img src="../assets/img/soleado.jpg" *ngIf="temperatura > 20" />
@@ -5,10 +10,11 @@
     <div class="weather-data">
       <div class="location">{{ nombre_ciudad }}</div>
       <div class="temperature">{{ temperatura | number : "1.0-0" }}°C</div>
+      <div class="description">{{ descripcion_clima }}</div>
     </div>
   </div>
   <div class="lower-data">
-    <div class="more-info-label">Más información</div>
+    <div class="more-info-label">Más información </div>
     <div class="more-info-container">
       <div class="info-block">
         <div class="info-block-label">
