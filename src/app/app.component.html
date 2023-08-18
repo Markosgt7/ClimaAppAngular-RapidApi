@@ -1,10 +1,10 @@
-<div class="container">
+<div class="container" *ngIf="clima">
   <div class="upper-data">
-    <img src="../assets/img/soleado.jpg" *ngIf="14 > 15" />
-    <img src="../assets/img/ocaso.jpg" *ngIf="14 <= 15" />
+    <img src="../assets/img/soleado.jpg" *ngIf="temperatura > 20" />
+    <img src="../assets/img/ocaso.jpg" *ngIf="temperatura <= 20" />
     <div class="weather-data">
-      <div class="location">Guatemala</div>
-      <div class="temperature">{{ 33.5 | number : "1.0-0" }}°C</div>
+      <div class="location">{{ nombre_ciudad }}</div>
+      <div class="temperature">{{ temperatura | number : "1.0-0" }}°C</div>
     </div>
   </div>
   <div class="lower-data">
@@ -15,28 +15,28 @@
           <img src="../assets/img/min_temp.png" />
           <span>min</span>
         </div>
-        <div class="info-block-value">10°C</div>
+        <div class="info-block-value">{{ min | number : "1.0-0" }}°C</div>
       </div>
       <div class="info-block">
         <div class="info-block-label">
           <img src="../assets/img/max_temp.png" />
           <span>max</span>
         </div>
-        <div class="info-block-value">38°C</div>
+        <div class="info-block-value">{{ max | number : "1.0-0" }}°C</div>
       </div>
       <div class="info-block">
         <div class="info-block-label">
           <img src="../assets/img/humedad.png" />
           <span>Humedad</span>
         </div>
-        <div class="info-block-value">77%</div>
+        <div class="info-block-value">{{ humedad | number : "1.0-0" }}%</div>
       </div>
       <div class="info-block">
         <div class="info-block-label">
           <img src="../assets/img/viento.png" />
           <span>Viento</span>
         </div>
-        <div class="info-block-value">75 km/h</div>
+        <div class="info-block-value">{{ viento | number : "1.0-0" }} km/h</div>
       </div>
     </div>
   </div>
